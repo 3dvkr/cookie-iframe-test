@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Required</title>
+</head>
+<body>
+    <h1>Authentication Required</h1>
+    <a href="/page2">Go to Page 2</a>
+    <a href="/">Go home</a>
+
+    <button onclick="authenticate()">Login</button>
+
+    <script>
+        function authenticate() {
+            fetch('/authenticate', { method: 'POST' })
+                .then(() => window.location.href = '/') // Redirect to home after login
+                .catch(err => console.error("Authentication failed", err));
+        }
+    </script>
+</body>
+</html>
